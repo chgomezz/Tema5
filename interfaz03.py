@@ -38,7 +38,7 @@ def video_de_entrada():
         rad1.configure(state="disabled")
         rad2.configure(state="disabled")
         lblInfoVideoPath.configure(text="")
-        cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+        cap = cv2.VideoCapture(2, cv2.CAP_DSHOW)
         ##cap = cv2.VideoCapture(0)
         fgbg = cv2.bgsegm.createBackgroundSubtractorMOG()
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(3,3))
@@ -105,7 +105,7 @@ def detectMove():
                 x, y, w, h = cv2.boundingRect(cnt)
                 cv2.rectangle(frame, (x,y), (x+w, y+h),(0,255,0), 2)
                 texto_estado = "Estado: Alerta Movimiento Detectado!"
-                #playsound("E:/fiuna2_2021/lpv/Tema5/graciosos-alarma-es-tu-mujer-.mp3")
+                playsound("E:/fiuna2_2021/lpv/Tema5/graciosos-alarma-es-tu-mujer-.mp3")
                 color = (0, 0, 255) 
         # Visuzalizamos el alrededor del área que vamos a analizar
         # y el estado de la detección de movimiento        
@@ -166,7 +166,8 @@ def mensaje():
 
 
 cap = None
-root = Tk()
+root = Tk(className='Tema 5')
+#root.geometry("640x500")
 
 lblInfo1 = Label(root, text="VIDEO DE ENTRADA", font="bold")
 lblInfo1.grid(column=0, row=0, columnspan=2)
